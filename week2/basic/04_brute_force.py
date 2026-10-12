@@ -44,9 +44,14 @@ def find_two_sum_pairs(nums, target):
     ## 외부 반복문: i는 0부터 n-1까지
     ## 내부 반복문: j는 i+1부터 n까지 (중복 방지)
     ## nums[i] + nums[j]가 target과 같으면 (i, j)를 결과에 추가
-    pass  
-    
+    for x in range(len(nums)-1):
+        for y in range(x,len(nums)):
+            if nums[x] + nums[y] == target:
+                pairs.append((x, y))
     return pairs
+
+# 정수 배열, 목표값
+# 두 수를 선택해서 목표 값과 같아지는 모든 쌍 찾기
 
 # 테스트 케이스
 if __name__ == "__main__":
