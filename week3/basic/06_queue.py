@@ -24,7 +24,7 @@
 - pop(0): 앞에서 제거 (dequeue)
 """
 
-from collections import deque
+from collections import deque # deque는 collections 모듈에서 가져와야 한다. from collections import deque
 
 def process_print_queue(jobs):
     """
@@ -44,8 +44,10 @@ def process_print_queue(jobs):
     # TODO: 큐가 비어있지 않은 동안 반복
     ## 큐에서 작업 꺼내기
     ## 작업 처리 (출력 및 리스트에 추가)
-    pass
-    
+    while queue:
+        now = queue.popleft()
+        print(f"처리: {now}")
+        processed.append(now)
     return processed
 
 # 테스트 케이스
