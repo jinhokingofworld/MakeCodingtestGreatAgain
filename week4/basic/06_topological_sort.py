@@ -40,20 +40,41 @@ def topological_sort(vertices, edges):
         위상 정렬 순서
     """
     # TODO: 그래프와 진입 차수 초기화
-    pass
-    
     # TODO: 그래프 구성 및 진입 차수 계산
-    pass
+
+    # 처음에 의존관계가 없는 것을 판별해야함
+    # 각 vertices에 해당하는 우선순위 딕셔너리를 만들고, 우선순위가 해결되면, 1씩 줄임. 0이되면, 실행가능
+    before = dict()
+    befores = [0 for x in range(vertices)]
+    for x in range(vertices):
+        before[x] = []
     
+    for x, y in edges:
+        before[x].append(y)
+        befores[y] += 1
+
     # TODO: 진입 차수가 0인 정점들을 큐에 추가
-    pass
-    
     result = []
+    queue = deque()
+
+    for x in range(vertices): #의존관계 없는 애들 일단 큐에 넣음
+            if befores[x] == 0:
+                queue.append(x)
     
     # TODO: 큐가 빌 때까지 반복
     ## 큐에서 정점 꺼내기
     ## 인접한 정점들의 진입 차수 감소
-    pass
+    while queue:
+        current = queue.popleft()
+        #befores[current] = -1 #방문했다는 표시
+
+        for x in before[current]:
+            befores[x] -= 1
+            if befores[x] == 0:
+                queue.append(x)
+        
+        if current not in result:
+            result.append(current)
     
     return result
 
