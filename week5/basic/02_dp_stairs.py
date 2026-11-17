@@ -50,6 +50,11 @@ def climb_stairs(n):
     
     # TODO: 특별한 경우 처리
     # 1칸과 0칸이 특별한 경우
+    if n < 0:
+        return -1
+    if n == 0:
+        return 1
+    
     dp[0] = 1
     dp[1] = 1
     
